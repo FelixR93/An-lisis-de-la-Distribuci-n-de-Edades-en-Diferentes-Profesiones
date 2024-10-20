@@ -5,7 +5,8 @@ profesiones <- read.csv("C:\\Users\\USER1\\Downloads\\Profesiones.csv")
 
 #Verificar las primeras filas de mi dataframe
 head(profesiones)
- #Cargamos las librerías necesarias
+
+#Cargamos las librerías necesarias
 library(dplyr)
 library(modeest)
 
@@ -15,17 +16,17 @@ tendencia_central <- profesiones %>%
   summarise(
     Media = mean(edad),
     Mediana = median(edad),
-    #Estemetodo nos sirve para extarer el valor de la moda
+    #Este método nos sirve para extraer el valor de la moda
     Moda = as.numeric(mlv(edad, method = "mfv")[1])
   )
 
-#mostramos el calculo de la tendencia central
+#mostramos el cálculo de la tendencia central
 print("Las medidas de tendencia central muestran la edad promedio (Media), la edad central (Mediana) y la edad más frecuente (Moda) de cada profesión.")
 print(tendencia_central)
 
 
 
-#Cáculo de las medidas de disperción de las profesiones (varianza, desviación estandar, rango)
+#Cáculo de las medidas de dispersión de las profesiones (varianza, desviación estándar, rango)
 dispersión <- profesiones %>%
   group_by(profesion) %>%
   summarise(
